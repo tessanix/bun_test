@@ -17,6 +17,10 @@ export class BooksDatabase {
             .catch(console.error);
     }
 
+    // Initialize the database
+    async init() {
+        return this.db.run('CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, author TEXT)');
+    }
     // Get all books
     async getBooks() {
         return this.db.query('SELECT * FROM books').all();
@@ -38,8 +42,4 @@ export class BooksDatabase {
         return this.db.run(`DELETE FROM books WHERE id = ${id}`)
     }
 
-    // Initialize the database
-    async init() {
-        return this.db.run('CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, author TEXT)');
-    }
 }

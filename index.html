@@ -10,28 +10,63 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <script src="/script.js"></script>
-        <title>Horizontal Menu Example</title>
+        <script defer src="/script.js"></script>
+        <title>Boutique</title>
     </head>
 
     <body>
-
         <header>
-            <h1 id="title">Horizontal Menu Example</h1>
-            <div class="hamburger">   
-                <span></span>
-                <span></span>
-                <span></span>
+            <div id="first-line-header">
+                <h1 id="title">Boutique</h1>
+                <div class="first-line-header-leftside">
+
+                    <div class="icon-container">
+                        <img class="connexion-icon" src="/icons/connexion.png" alt="Icon">  
+
+                        <div id="connexion-submenu">
+                        <a id="showLoginTabButton">Mon compte</a>
+                        </div>
+
+                    </div>
+
+                    <div class="hamburger">   
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
             </div>
+            <nav class="horizontal-nav">
+                <a href="#">Acceuil</a>
+                <a href="#">Produits</a>
+                <a href="#">Contacts</a>
+            </nav>
+    
+            <nav class="vertical-nav">
+                <a href="#">Acceuil</a>
+                <a href="#">Produits</a>
+                <a href="#">Contacts</a>
+            </nav>
         </header>
 
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-        
+
+        <div id="login-tab">
+            <div id="closeLoginTabButton">x</div>
+            <form id="loginForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+                <div id="loginFormButtonsContainer">
+                    <input type="button" onclick="submitLoginForm(true)" value="se connecter">
+                    <input type="button" onclick="submitLoginForm(false)" value="s'enregistrer">
+                </div>
+            </form>
+        </div>
+
+
         <div id="content">
             <div>
                 <p>This is the main content of your page.</p>
