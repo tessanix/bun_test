@@ -10,10 +10,10 @@ export class UsersDatabase {
     private db: Database;
 
     constructor() {
-        this.db = new Database('users.sqlite');
+        this.db = new Database('app/users.sqlite');
         // Initialize the database
         this.init()
-            .then(() => console.log('Database initialized'))
+            .then(() => console.log('Users database initialized'))
             .catch(console.error);
     }
 
@@ -23,7 +23,7 @@ export class UsersDatabase {
     }
     // Get all users
     async getAllUsers() {
-        return this.db.query('SELECT * FROM users').all();
+        return this.db.query('SELECT * FROM users').all() as User[];
     }
 
     // Add a user

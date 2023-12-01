@@ -1,19 +1,46 @@
 import { Elysia, t } from 'elysia';
 import { html } from '@elysiajs/html'
+
 import { User, UsersDatabase } from './users_database.js';
-import { indexHtml } from './index.html.tsx';
-import { productsHtml } from './products.html.tsx';
+import { Product, ProductsDatabase } from './products_database.ts';
 
-const db = new UsersDatabase();
+import { indexHtml } from '../pages/index.html.tsx';
+import { productsHtml } from '../pages/products.html.tsx';
+import { adminHtml } from '../pages/admin.html.tsx';
 
+const usersDB = new UsersDatabase();
+const productsDB = new ProductsDatabase();
+// interface Testype {
+//     name: string,
+//     category: number
+// }
 new Elysia()
     .use(html())
-    .decorate('header', await Bun.file("./header.html").text())
+    .decorate('header', await Bun.file("./components/header.html").text())
     .get("/", ({header}) => indexHtml(header)) 
+    .get("/admin", () => adminHtml())
+    .post("/addNewProduct", ({ body }) => { 
+        console.log(`New product ${body.name} added to database`)
+        productsDB.addProduct(body as Product)
+        return body 
+    }, 
+    {
+        body: t.Object({
+            name: t.String(),
+            category: t.Integer(),
+            price : t.Number()
+        }),
+
+        response: t.Object({
+            name: t.String(),
+            category: t.Integer(),
+            price : t.Number()
+        })
+    })
+    .get("/productsList", () => productsDB.getAllProducts())
     .get("/products", ({header}) => productsHtml(header))
-    // .get("/registrationForm", () => Bun.file("registrationForm.html").text())
     .post("/submitRegistration", ({ body }) => { 
-        db.addUser(body as User)
+        usersDB.addUser(body as User)
         console.log(body)
         return body 
     }, 
@@ -29,7 +56,7 @@ new Elysia()
         })
     })
     .post("/submitLogin", async ({ body }) =>  { 
-        console.log(await db.getUserFromEmail(body.email))
+        console.log(await usersDB.getUserFromEmail(body.email))
         return body 
     }, 
     {
@@ -43,11 +70,12 @@ new Elysia()
             password: t.String()
         })
     })
-    .get("/allUsers", () =>  db.getAllUsers() )
-    .get("/script.js", () => Bun.file("script.js").text())
-    .get("/styles.css", () => Bun.file("styles.css"))
+    .get("/users", () => usersDB.getAllUsers() )
+    .get("/script.js", () => Bun.file("js/script.js").text())
+    .get("/admin.js", () => Bun.file("js/admin.js").text())
+    .get("/styles.css", () => Bun.file("css/styles.css"))
     .get("/icons/:name", ({ params: { name } }) => Bun.file(`public/icons/${name}`))
-    // .get("/books", ({ db }) => db.getBooks()) // route to GET a book
+     // route to GET a book
     // .post(                                    // route to CREATE a book
     //     "/books",
     //     async ({ db, body }) => {

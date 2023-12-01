@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "start": "bun run index.ts",
-    "debug_functional": "bun --watch index.ts",
-    "debug_testing1": "bun --watch index_upgraded1.tsx",
-    "debug_testing2": "bun --watch index_upgraded2.tsx"
+    "debug_functional": "bun --watch app/index.ts",
+    "debug_testing1": "bun --watch tests/index_upgraded1.tsx",
+    "debug_testing2": "bun --watch tests/index_upgraded2.tsx"
   },
   "devDependencies": {
     "bun-types": "latest"

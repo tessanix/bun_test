@@ -1,22 +1,3 @@
-window.addEventListener("DOMContentLoaded", function () {
-    fetch("/books", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-
-    })
-        .then((res) => res.json())
-        .then((books) => {
-            document.getElementById("bookList").innerHTML = books.map((book) => {
-                return `
-                <li id="${book.id}">
-                    ID: ${book.id} <br> Name: ${book.name} <br> Author: ${book.author}
-                </li>
-            `
-            }).join("");
-        })
-}, false);
 
 const hamburger = document.querySelector('.hamburger');
 const verticalNav = document.querySelector('.vertical-nav');
