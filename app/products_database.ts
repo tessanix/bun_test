@@ -6,7 +6,7 @@ const enum productCategory {
 }
 
 export interface Product {
-    id?: number;
+    id: number;
     name: string;
     category: productCategory;
     price: number;
@@ -36,7 +36,8 @@ export class ProductsDatabase {
     // Add a product
     async addProduct(product: Product) {
         // q: Get id type safely 
-        return this.db.query(`INSERT INTO products (name, category, price) VALUES (?, ?, ?) RETURNING id`).get(product.name, product.category, product.price) as Product;
+        const query = this.db.query(`INSERT INTO products (name, category, price) VALUES (?, ?, ?) RETURNING *`)
+        return query.get(product.name, product.category, product.price) as Product;
     }
 
     // async getUserFromEmail(email: String) {
@@ -52,5 +53,4 @@ export class ProductsDatabase {
     async deleteProduct(id: number) {
         return this.db.run(`DELETE FROM products WHERE id = ${id}`)
     }
-
 }

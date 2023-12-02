@@ -1,0 +1,74 @@
+
+#side-bar {
+    position : fixed;
+    display: flex;
+    flex-direction: column;
+    height : 100%;
+    width: 10%;
+}
+
+#add-product-icon, #delete-product-icon {
+    height: 50px;
+    width: 50px;
+    cursor : pointer
+}
+
+.delete-product-icon-table{
+    height: 20px;
+    width: 20px;
+    cursor : pointer
+}
+
+#content {
+   position: relative;
+   left:10% 
+}
+
+#add-product-tab, #delete-product-tab {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left:50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 30%;
+    border-radius: 10%;
+    padding: 15px;
+}
+
+#add-product-tab{
+    background-color: aquamarine;
+} 
+
+#delete-product-tab {
+    background-color: rgb(194, 82, 106);
+}
+
+#add-product-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+table {
+    max-width: 100vh;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Style table headers */
+th, td {
+border: 1px solid #ddd;
+padding: 10px;
+text-align: left;
+}
+
+/* Alternating row colors for better readability */
+tr:nth-child(even) {
+background-color: #f9f9f9;
+}
+
+/* Hover effect for table rows */
+tr:hover {
+background-color: #f5f5f5;
+}

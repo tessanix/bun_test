@@ -7,6 +7,7 @@ import { Product, ProductsDatabase } from './products_database.ts';
 import { indexHtml } from '../pages/index.html.tsx';
 import { productsHtml } from '../pages/products.html.tsx';
 import { adminHtml } from '../pages/admin.html.tsx';
+import { isModuleBody } from 'typescript';
 
 const usersDB = new UsersDatabase();
 const productsDB = new ProductsDatabase();
@@ -21,8 +22,9 @@ new Elysia()
     .get("/admin", () => adminHtml())
     .post("/addNewProduct", ({ body }) => { 
         console.log(`New product ${body.name} added to database`)
-        productsDB.addProduct(body as Product)
-        return body 
+        const product = productsDB.addProduct(body as Product)
+        console.log(product)
+        return product
     }, 
     {
         body: t.Object({
@@ -32,9 +34,24 @@ new Elysia()
         }),
 
         response: t.Object({
+            id : t.Integer(),
             name: t.String(),
             category: t.Integer(),
             price : t.Number()
+        })
+    })
+    .post("/deleteProduct", ({ body }) => { 
+        console.log(`Product id=${body.id} deleted from database`)
+        productsDB.deleteProduct(body.id)
+        return body 
+    }, 
+    {
+        body: t.Object({
+            id: t.Integer()
+        }),
+
+        response: t.Object({
+            id: t.Integer()
         })
     })
     .get("/productsList", () => productsDB.getAllProducts())
@@ -73,6 +90,7 @@ new Elysia()
     .get("/users", () => usersDB.getAllUsers() )
     .get("/script.js", () => Bun.file("js/script.js").text())
     .get("/admin.js", () => Bun.file("js/admin.js").text())
+    .get("/admin.css", () => Bun.file("css/admin.css"))
     .get("/styles.css", () => Bun.file("css/styles.css"))
     .get("/icons/:name", ({ params: { name } }) => Bun.file(`public/icons/${name}`))
      // route to GET a book
