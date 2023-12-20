@@ -1,128 +1,13 @@
+
 body {
     font-family: Arial, sans-serif;
+    height: 100vh;
     margin: 0;
     padding: 0;
+    font-family: 'Ropa Sans', sans-serif;
+    background: linear-gradient(to bottom, #74ABE2, #5563DE);
 }
 
-#first-line-header {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 5fr 1fr;
-    align-items: center;
-    justify-items: center;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    height: 100px;
-    position: fixed;
-    top:0;
-    z-index: 4;
-}
-
-#title {
-    grid-column: 2 / 3;
-}
-
-#first-line-header-leftside{
-    grid-column: 3 / 4;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.icon-container{
-    position: relative;
-}
-
-.connexion-icon{
-    width: 50px;
-    height: 50px;
-}
-
-#connexion-submenu {
-    display: none;
-    justify-content: space-around;
-    width: 120px;
-    height: 60px;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left:50%;
-    transform: translateX(-50%);
-    background-color: rgba(209, 201, 201, 0.856); 
-    border-radius: 10%;
-}
-
-#showLoginTabButton {
-    color: #555;
-    cursor: pointer;
-}
-
-.hamburger {
-    display: flex;
-    flex-direction: column; 
-    opacity:0;
-    transition: opacity 0.5 ease;
-    cursor: pointer;
-}
-
-.hamburger span {
-    height: 3px;
-    width: 30px;
-    margin:2px;
-    background-color: azure;
-}
-
-div.fade-in {
-    opacity:1;
-}
-
-nav.horizontal-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #444;
-    position: fixed;
-    width: 100%;
-    height : 45px;
-    top:100px;
-    z-index: 2;
-    transition: top 0.5s ease;
-}
-
-nav.vertical-nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
-    background-color: #444;
-    position: fixed;
-    width: 200px;
-    right: -200px;
-    top: 100px;
-    z-index: 2;
-    transition: right 0.5s ease;
-}
-
-nav.vertical-nav.slide-left {
-    right: 0px;
-}
-
-nav.slide-up {
-    top: -45px;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 14px 20px;
-    display: inline-block;
-    transition: background-color 0.3s;
-}
-
-nav a:hover {
-    background-color: #555;
-}
 
 #login-tab {
     border-radius: 10%;

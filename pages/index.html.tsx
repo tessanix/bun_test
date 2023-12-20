@@ -4,6 +4,7 @@ export let indexHtml = async (header: string) => (
             <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <link rel="stylesheet" type="text/css" href="styles.css"/>
+            <link rel="stylesheet" type="text/css" href="header.css"/>
             <script defer src="/script.js"></script>
             <title>Acceuil</title>
         </head>

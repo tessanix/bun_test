@@ -23,8 +23,8 @@ export let adminHtml = async () => (
 
                         <label for="category">catégorie</label>
                         <select id="category" name="category" >
-                            <option value="1">T-shirt</option>
-                            <option value="2">Pant</option>
+                            <option value="0">T-shirt</option>
+                            <option value="1">Pant</option>
                         </select>
                         
                         <label for="price">prix en €</label>

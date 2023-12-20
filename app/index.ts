@@ -18,6 +18,7 @@ const productsDB = new ProductsDatabase();
 new Elysia()
     .use(html())
     .decorate('header', await Bun.file("./components/header.html").text())
+    .decorate('caroussel', await Bun.file("./components/caroussel.html").text())
     .get("/", ({header}) => indexHtml(header)) 
     .get("/admin", () => adminHtml())
     .post("/addNewProduct", ({ body }) => { 
@@ -55,7 +56,7 @@ new Elysia()
         })
     })
     .get("/productsList", () => productsDB.getAllProducts())
-    .get("/products", ({header}) => productsHtml(header))
+    .get("/products", ({header, caroussel}) => productsHtml(header, caroussel))
     .post("/submitRegistration", ({ body }) => { 
         usersDB.addUser(body as User)
         console.log(body)
@@ -92,6 +93,9 @@ new Elysia()
     .get("/admin.js", () => Bun.file("js/admin.js").text())
     .get("/admin.css", () => Bun.file("css/admin.css"))
     .get("/styles.css", () => Bun.file("css/styles.css"))
+    .get("/header.css", () => Bun.file("css/header.css"))
+    .get("/products.css", () => Bun.file("css/products.css"))
+    .get("/caroussel.css", () => Bun.file("css/caroussel.css"))
     .get("/icons/:name", ({ params: { name } }) => Bun.file(`public/icons/${name}`))
      // route to GET a book
     // .post(                                    // route to CREATE a book

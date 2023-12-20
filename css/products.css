@@ -1,0 +1,16 @@
+
+#caroussel {
+    height: 84vh;
+    overflow: hidden;
+    position: relative;
+    top:16vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Ropa Sans', sans-serif;
+}
+
+#products-lines-display {
+    display:grid;
+}
+

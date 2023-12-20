@@ -1,9 +1,12 @@
-export let productsHtml = async (header: string) => (
+export let productsHtml = async (header: string, caroussel: string) => (
     <html>
         <head>
             <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <link rel="stylesheet" type="text/css" href="styles.css"/>
+            <link rel="stylesheet" type="text/css" href="header.css"/>
+            <link rel="stylesheet" type="text/css" href="caroussel.css"/>
+            <link rel="stylesheet" type="text/css" href="products.css"/>
             <script defer src="/script.js"></script>
             <title>Produits</title>
         </head>
@@ -27,22 +30,18 @@ export let productsHtml = async (header: string) => (
             </div>
 
 
-            <div id="content">
-                <div>
-                    <p>This is the SHOP.</p>
-                </div>
-
-                <div class="square-container">
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                </div>
-            </div>
+            <section id="caroussel"> {caroussel} </section>
+        
+            <section id ="products-lines-display">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </section>
 
         </body>
     </html>
